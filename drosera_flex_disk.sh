@@ -32,15 +32,10 @@ fi
 DISK_FREE=$(df -BG / | tail -1 | awk '{print $4}' | sed 's/G//')
 echo "ℹ️  Terdeteksi $DISK_FREE GB ruang kosong di root (/)"
 if [ "$DISK_FREE" -lt 10 ]; then
-  echo "⚠️  Disk space kamu hanya $DISK_FREE GB. Disarankan minimal 10 GB agar node berjalan lancar."
+  echo "⚠️  Disk space kamu hanya $DISK_FREE GB. Ini sangat kecil, tapi instalasi akan tetap dilanjutkan."
 else
   echo "✅ Disk space cukup untuk melanjutkan instalasi."
 fi
-  echo "❌ Disk space kurang dari 20 GB. Diperlukan minimal 20 GB!"
-  exit 1
-fi
-
-echo "✅ Spesifikasi VPS aman. Lanjut instalasi..."
 
 # Ambil IP VPS otomatis
 VPS_IP=$(curl -s ifconfig.me)
